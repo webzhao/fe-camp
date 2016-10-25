@@ -1,0 +1,10 @@
+{
+  "name": "fe-camp",
+  "version": "1.0.0",
+  "description": "Front-end Camp",
+  "scripts": {
+    "toc": "node toc.js"
+  },
+  "author": "zhaowenbo",
+  "license": "MIT"
+}

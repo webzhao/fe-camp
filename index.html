@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Front-end Camp</title>
+  <style>
+    ol li {
+      list-style: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>奇舞学院前端特训营</h1>
+  <ol></ol>
+  <script src="resources/js/toc.js"></script>
+  <script>
+    document.querySelector('ol').innerHTML =
+      toc.map(c => `<li><a href="/show.html?slide=${c}">${c}</a></li>`).join('');
+  </script>
+</body>
+</html>
