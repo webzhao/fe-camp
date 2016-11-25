@@ -1,13 +1,19 @@
 const fs = require('fs');
-const basename = require('path').basename;
+const path = require('path');
 const slidesPath = './slides';
 const tocScriptFile = './resources/js/toc.js';
 
-fs.readdir(slidesPath, (err, files) => {
-  if (err) {
-    return console.error(err);
+const isSection = dir => /section-\d+/i.test(dir);
+const isMarkdown = file => file.endsWith('.md');
+
+const dirs = fs.readdirSync(slidesPath);
+const sections = dirs.map(dir => path.resolve(slidesPath, dir)).filter(isSection);
+const toc = sections.map(dir => {
+  return {
+    title: path.basename(dir),
+    contents: fs.readdirSync(dir).filter(isMarkdown).map(f => path.basename(f, '.md'))
   }
-  const contents = files.filter(f => f.endsWith('.md')).map(f => basename(f, '.md')).sort();
-  const tocScript = `const toc = ${JSON.stringify(contents)};`;
-  fs.writeFile(tocScriptFile, tocScript, err => console.error)
 });
+const tocScript = `const toc = ${JSON.stringify(toc)};`;
+fs.writeFile(tocScriptFile, tocScript, err => console.error);
+

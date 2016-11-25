@@ -3098,7 +3098,7 @@ var backgroundColor = {
   }
 };
 
-var plugins = Object.freeze({
+var plugins = {
 	pageTitle: pageTitle,
 	syntaxHighlighter: syntaxHighlighter,
 	fontawesome: fontawesome,
@@ -3115,7 +3115,7 @@ var plugins = Object.freeze({
 	speech: speech,
 	backgroundImage: backgroundImage,
 	backgroundColor: backgroundColor
-});
+};
 
 var classNames = ['prev', 'current', 'next'];
 var userPlugins = {};
@@ -3133,6 +3133,7 @@ var Diapo$1 = function () {
 
     // init values
     this.current = 0;
+    this.enableKeyNav = true;
     this.content = content;
     this.plugins = this.getPlugins();
     this.initContainer(el);
@@ -3192,6 +3193,9 @@ var Diapo$1 = function () {
         13: 'next' //enter
       };
       window.addEventListener('keydown', function (e) {
+        if (!_this.enableKeyNav) {
+          return;
+        }
         var action = actions[e.keyCode];
         action && e.preventDefault();
         action && _this.transition(action);

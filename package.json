@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "Front-end Camp",
   "scripts": {
-    "toc": "node toc.js"
+    "toc": "node toc.js",
+    "start": "serv"
   },
   "author": "zhaowenbo",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "serv": "^0.2.4"
+  }
 }

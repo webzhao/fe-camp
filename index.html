@@ -4,18 +4,103 @@
   <meta charset="UTF-8">
   <title>Front-end Camp</title>
   <style>
-    ol li {
+    * {
+      box-sizing: inherit;
+    }
+    body {
+      min-height: 100%;
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+      background: #272822 url(/resources/img/bg.jpg) no-repeat center center;
+      background-size: cover;
+      color: #fff;
+      box-sizing: border-box;
+      font-family: "Helvetica Neue", HelveticaNeue, Helvetica, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arial, sans-serif;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      line-height: 4;
+      margin: 0;
+      background: rgba(103,105,97,0.8);
+    }
+    h1 .logo {
+      display: inline-block;
+      width: 1.2em;
+      height: 1.2em;
+      vertical-align: -0.2em;
+      background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDojZjFkZDNmO30uYntmaWxsOiMzMjMzMzA7fS5je2ZpbGw6I2ZmZjtvcGFjaXR5OjAuMzt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmZyb250LWVuZC1sb2dvLWNvbG9yPC90aXRsZT48cGF0aCBjbGFzcz0iYSIgZD0iTTcxLjUsNDYwLDMwLjUsMGg0NTFsLTQxLDQ2MC0xODUsNTJaIi8+PHBvbHlnb24gY2xhc3M9ImIiIHBvaW50cz0iMjg1LjQgOTMgMjcwLjggMTQ5IDMzNS41IDE0OSAzMzAuNSAyMDcgMjU1LjUgMjA3IDI0MC42IDI2NCAzMjUuNSAyNjQgMzE4LjUgMzM3IDI1NS41IDM1NCAyMTkuNSAzNDQuMyAyMDUuMiAzOTkuMSAyNTUuNSA0MTMgMjU2LjUgNDEzIDM3Mi41IDM4MSAzOTcuNSA5MyAyODUuNCA5MyIvPjxwb2x5Z29uIGNsYXNzPSJiIiBwb2ludHM9IjE5Mi41IDMzNyAxOTIuNSAzMzcgMTg2LjIgMjY0IDIxMS43IDI2NCAyMjYuNiAyMDcgMTgxLjUgMjA3IDE3Ni41IDE0OSAyNDEuOCAxNDkgMjU2LjUgOTMgMTE0LjUgOTMgMTM5LjUgMzgxIDE3OC4yIDM5MS43IDE5Mi41IDMzNyIvPjxwYXRoIGNsYXNzPSJjIiBkPSJNMjU2LjUsNDcybDE0OS00MSwzNS0zOTRoLTE4NFoiLz48L3N2Zz4=);
+      //background: url(https://t.75team.com/favicon.ico) no-repeat center center;
+      background-size: contain;
+    }
+    #toc {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      height: calc(100vh - 8em);
+      line-height: 2;
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+    #toc section {
+      flex-basis: 50%;
+      padding: 2em 3em;
+      border-top: 1px solid rgba(255,255,255,0.5);
+      font-size: 1.9vmin;
+      background: rgba(25, 48, 77, 0.8);
+      text-transform: capitalize;
+    }
+    #toc section:nth-child(1) {
+      background: rgba(33,117,155,0.8);
+    }
+    #toc section:nth-child(2) {
+      background: rgba(248,155,70,0.8)
+    }
+    #toc section:nth-child(3) {
+      background: rgba(128,189,1,0.8);
+    }
+    #toc section:nth-child(4) {
+      background: rgba(208,78,78,0.8)
+    }
+    #toc section:nth-child(odd){
+      border-right: 1px solid rgba(255,255,255,0.5);
+    }
+    #toc section:nth-child(-n+2){
+      border-top: none;
+    }
+    #toc section h3 {
+      margin: 0;
+      padding-left: 2.4em;
+    }
+    #toc section a {
+      color: #fff;
+      text-decoration: none;
+    }
+    #toc section a:hover {
+      text-decoration: underline;
+    }
+    #toc li {
       list-style: none;
     }
   </style>
 </head>
 <body>
-  <h1>奇舞学院前端特训营</h1>
-  <ol></ol>
+  <h1><i class="logo"></i> 前端特训营</h1>
+  <div id="toc">
+    <section v-for="section in toc">
+      <h3>{{section.title}}</h3>
+      <ul>
+        <li v-for="c in section.contents"><a v-bind:href="'/show.html?slide='+section.title+'/'+c" target="_blank">{{c}}</a></li>
+      </ul>
+    </section>
+  </div>
+  <script src="//lib.baomitu.com/vue/2.0.8/vue.min.js"></script>
   <script src="resources/js/toc.js"></script>
   <script>
-    document.querySelector('ol').innerHTML =
-      toc.map(c => `<li><a href="/show.html?slide=${c}">${c}</a></li>`).join('');
+    var app = new Vue({
+      el: '#toc',
+      data: { toc }
+    });
   </script>
 </body>
 </html>
