@@ -272,5 +272,243 @@ element in graphic design. </p>
 </ul>
 ```
 
+---
+
+## 定义列表
+
+```markup
+<h3>霸王别姬</h3>
+<dl>
+  <dt>导演：</dt>
+  <dd>陈凯歌</dd>
+  <dt>主演：</dt>
+  <dd>张国荣</dd>
+  <dd>张丰毅</dd>
+  <dd>巩俐</dd>
+  <dt>上映日期：</dt>
+  <dd>1993-01-01</dd>
+</dl>
+```
+
+---
+
+## 嵌套规则
+
+```markup
+<div>
+  <li>Item 1</li>
+  <li>Item 2</li>
+</div>
+<span>
+  <dt>专业：</dt>
+  <dd>软件工程</dd>
+</span>
+```
+
+---
+
+### 引用
+
+```markup
+<blockquote cite="http://t.cn/RfjKO0F">
+  <p>天才并不是自生自长在深林荒野里的怪物， 是由可以使天才生长
+  的民众产生、长育出来的，所以没有 这种民众，就没有天才。</p>
+</blockquote>
+<p>--鲁迅</p>
+
+<p>我最喜欢的一本书是<cite>小王子</cite>。</p>
+
+<p>在<cite>第一章</cite>，我们讲过<q>字符串是不可变量</q>。</p>
+```
+
+---
+
+## 预格式化文本
+
+```markup
+<p>第一行 空    格
+第二行</p>
+
+<pre>第一行 空    格
+第二行</pre>
+```
+
+---
+
+## 代码
+
+```markup
+<p><code>const</code>声明创建一个只读的常量。</p>
+
+<pre><code>
+const add = (a, b) => a + b;
+const multiply = (a, b) => a * b;
+</code></pre>
+```
+
+---
+
+## figure
+
+```markup
+<figure>
+  <img src="https://p5.ssl.qhimg.com/t0198eb3fd45b8fac05.jpg" 
+    alt="字体排印样表">
+  <figcaption>威廉·卡斯隆制作的一张字体排印样表</figcaption>
+</figure>
+
+<figure>
+  <figcaption>定义一个函数</figcaption>
+  <pre><code>
+  function add(x, y) {
+    var total = x + y;
+    return total;
+  }
+  </code></pre>
+</figure>
+```
+
+---
+
+## 网页总体结构
+
+![article](img/article.svg)
+
+---
+
+## 内容划分
+
+```markup
+<article>
+  <header>
+    <h1>字体排印学</h1>
+    <p>作者：XXX</p>
+  </header>
+  <section>
+    <h2>语源及其范围</h2>
+    <p>在当代，字体排印学的相关研究和实践范围相当广...</p>
+    <p>以字体排印为核心的图像中，通常使用四项基本手...</p>
+  </section>
+  <section>
+    <h2>可读性和易读性</h2>
+    <p>可读性和易读性经常被混淆。可读性通常用...</p>
+    <p>与之相对，易读性描述的是排印文本阅读时的...</p>
+  </section>
+  <footer>
+    <h2>参考链接</h2>
+    <nav>
+      <ul>
+        <li><a href="">衬线字体</a></li>
+        <li><a href="">字体设计</a></li>
+      </ul>
+    </nav>
+  </footer>
+</article>
+```
+
+---
+
+## 我该用哪个标签？
+
+iframe(src="slides/section-1/img/h5d-sectioning-flowchart.pdf" width="1000" height="770")
+
+---
+
+## 强调
+
+* `strong`：重要性、严重性和紧急性
+* `em`：从一句话中突出某个词语
+* `b`：将词语从视觉上和其它部分区分，比如一篇论文摘要中的关键词
+* `i`：换一种语调去说一句话时，比如其它语言翻译，对话中的旁白
+
+---
+
+## 定义与缩写
+
+```markup
+<p><dfn>HTML是HyperText Markup Language的简称，一种用户创建
+网页的标记语言</dfn></p>
+
+<p><abbr title="HyperText Markup Language">HTML</abbr>
+标准由<abbr title="World Wide Web Consortium">W3C<abbr>
+制定和修改。</p>
+```
+
+---
+
+## 代码
+
+```markup
+<p>使用HTML5写页面，第一行要写<code>&lt;!DOCTYPE html&gt;</code></p>
+
+<p>能量<var>E</var>等于质量<var>m</var>乘以光速<var>c</var>的平方</p>
+
+<p>按下<kbd>F12</kbd>打开浏览器开发者工具。</p>
+
+<p>检查当前工作仓库状态：</p>
+<pre><code>zhaowenbo@localhost:camp$ <kbd>git status</kbd>
+<samp>On branch master
+Your branch is up-to-date with 'origin/master'.
+</samp>
+</code></pre>
+```
+
+---
+
+## 上标和下标
+
+```markup
+<p>E = MC<sup>2</sup></p>
+<p>CO<sub>2</sub></p>
+```
+---
+
+## mark
+
+* 和用户当前行为相关的突出，比如在搜索结果中匹配到的词
+* 一部分内容需要在后面引用时
+
+---
+
+## 插入和删除
+
+```markup
+<p>但是，该属性<del>目前还没有浏览器支持。</del>
+<ins>更新：最新版本的Safari 6.1已经支持。</ins></p>
+
+<p><del>原价：299元</del> <ins>双11特价：188元</ins></p>
+```
+
+---
+
+## 换行控制(尽量避免)
+
+```markup
+<p>JavaScript<br>高级程序设计</p>
+
+<p>https://zh.wikipedia.org/wiki/%E4%B8%87%E7%BB%B4%E7%BD%91%E8%81%94%E7%9B%9F</p>
+
+<p>https://zh.wikipedia.org/<wbr>wiki/<wbr>%E4%B8%87%E7%BB%B4<wbr>%E7%BD%91%E8%81%94%E7%9B%9F</p>
+```
+
+---
+
+## div 和 span
+
+实在找不到其它更符合语义的标签时使用
+
+---
+
+## 实体(Entity)字符
+
+```markup
+&amp; &nbsp; &lt; &gt; &copy; &yen; &#9775;
+```
+
+---
+
+bgcolor: green
+
+<<+++++++++ :fa-comments: +>>
 
 

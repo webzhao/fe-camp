@@ -3187,9 +3187,11 @@ var Diapo$1 = function () {
       var actions = {
         37: 'prev', //arrow left
         38: 'prev', //arrow up
+        33: 'prev', //page up
         39: 'next', //arrow right
         40: 'next', //arrow down
         32: 'next', //space
+        34: 'next', //page down
         13: 'next' //enter
       };
       window.addEventListener('keydown', function (e) {

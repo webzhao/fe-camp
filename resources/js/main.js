@@ -29,7 +29,25 @@
     });
     Diapo.addPlugin('preview', {
       afterRender: function(diapo) {
+        var container = document.createElement('div');
+        var frame = document.createElement('iframe');
+        var closeBtn = document.createElement('div');
+        var close = e => container.style.display = 'none';
+
+        container.style.cssText = 'display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#fff'
+        frame.style.cssText = 'border:none;width:100%;height:90%';
+        closeBtn.style.cssText = 'position:fixed;top:0.5em;right:0.5em;cursor:pointer;font-size:2em;color:rgba(50,50,50,0.5)';
+
+        frame.src = 'about:blank';
+        closeBtn.innerHTML = '&times;';
+
+        container.appendChild(frame);
+        container.appendChild(closeBtn);
+        document.body.appendChild(container);
+
+        closeBtn.onclick = close;
         window.addEventListener('keyup', function(e) {
+          if (e.key == 'Escape') return close();
           if (e.key != 'p' || !e.ctrlKey) return;
           const slide = diapo.slides[diapo.current];
           const code = slide.querySelector('pre code');
@@ -48,8 +66,11 @@
               </html>
             `;
           }
-          const w = window.open('about:blank');
-          w.document.write(html)
+          container.style.display = 'block';
+          var doc = frame.contentWindow.document;
+          doc.open();
+          doc.write(html);
+          doc.body.style.zoom = 1.5;
         })
       }
     });
