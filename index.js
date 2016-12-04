@@ -27,8 +27,8 @@ var app = http.createServer(function onRequest (req, res) {
   } else {
     serv(req, res);
   }
-  
+
 }).listen(8000)
 
-
+console.log('Server started at  http://localhost:8000')
 
