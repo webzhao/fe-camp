@@ -4,7 +4,7 @@
   "description": "Front-end Camp",
   "scripts": {
     "toc": "node toc.js",
-    "start": "serv"
+    "start": "node index.js"
   },
   "author": "zhaowenbo",
   "license": "MIT",
