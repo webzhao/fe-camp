@@ -3014,12 +3014,10 @@ var fragment = {
   beforeTransition: function beforeTransition(diapo, dir) {
     var slide = diapo.slides[diapo.current],
         fragments = $$('.fragment', slide),
-        toStatus = dir === 'next' ? 'visible' : 'hidden',
-        remains = fragments.filter(function (f) {
-      return f.style.visibility != toStatus;
-    });
+        toStatus = dir === 'next' ? 'fragment on' : 'fragment',
+        remains = fragments.filter(f => (dir === 'next') ? !f.classList.contains('on') : f.classList.contains('on'));
     if (!remains.length) return;
-    remains[dir === 'next' ? 'shift' : 'pop']().style.visibility = toStatus;
+    remains[dir === 'next' ? 'shift' : 'pop']().className = toStatus;
     return false;
   }
 };

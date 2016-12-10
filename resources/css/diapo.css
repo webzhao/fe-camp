@@ -338,10 +338,15 @@ html {
   appearence: none;
   -webkit-appearance: none;
   border: none;
+  transition: height 0.3s;
 }
 .diapo-container progress[value]::-webkit-progress-value {
   -webkit-transition: width 0.5s ease;
   transition: width 0.5s ease;
+}
+.diapo-container progress:hover {
+  height: 1rem;
+  max-height: 99px;
 }
 .diapo-slide {
   display: none;
@@ -372,13 +377,18 @@ html {
   text-align: left;
 }
 .diapo-content ul, .diapo-content ol {
+  padding-left: 2em;
+}
+.diapo-content>ul, .diapo-content>ol {
   display: inline-block;
-  padding-left: 1em;
+  padding-left: 0;
+  font-size: 1.1em;
 }
 .diapo-content li {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  line-height: 1.2;
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+  line-height: 1.4;
+  font-size: 0.9em;
 }
 .diapo-content li p {
   margin: 0;
@@ -446,6 +456,13 @@ html {
 .diapo-content iframe:not([height]) {
   height: 90vh;
 }
+.diapo-content iframe[fullscreen] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
 .diapo-content .two-column {
   display: inline-block;
   -webkit-column-count: 2;
@@ -467,9 +484,8 @@ html {
 .diapo-content .two-column > *:last-child {
   margin-bottom: 0;
 }
-.diapo-content .fragment {
-  visibility: hidden;
-}
+
+
 /**
  * for mobile
  */
@@ -494,22 +510,6 @@ html {
 /**
  * portraits warning message
  */
-@media screen and (max-width: 720px) and (orientation: portrait) {
-  body::after {
-    content: 'View it in landscape mode.';
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    line-height: 100vh;
-    background: rgba(0,0,0,0.8);
-    color: #fff;
-    text-align: center;
-    font-size: 3vh;
-  }
-}
 @font-face {
   font-family: 'fzlthjw'; /* 方正兰亭黑简体 */
   src: url(https://s.ssl.qhimg.com/static/bca0a7160eaf5421/fzlthjw.woff) format('woff2');
@@ -549,12 +549,23 @@ html {
   display: -ms-flexbox;
   display: flex;
 }
+.diapo-content .fragment {
+  visibility: hidden;
+  transition: all 0.5s ease-in-out;
+  will-change: transform;
+}
+.diapo-content .fragment.on {
+  visibility: visible;
+}
 .transition-slide {
 }
 .transition-slide .diapo-slide {
   opacity: 0;
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
+}
+.diapo-slide.prev, .diapo-slide.next {
+  pointer-events: none;
 }
 .transition-slide .diapo-slide.prev, .transition-slide .diapo-slide.current, .transition-slide .diapo-slide.next {
   display: -webkit-box;
@@ -572,8 +583,16 @@ html {
   -webkit-transform: translate3d(100%, 0, 0);
           transform: translate3d(100%, 0, 0);
 }
-.transition-fade {
+.transition-slide .fragment {
+  visibility: visible;
+  opacity: 0;
+  transform: translateX(100%);
 }
+.transition-slide .fragment.on {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 .transition-fade .diapo-slide {
   opacity: 0;
 }
@@ -588,3 +607,97 @@ html {
 .transition-fade .diapo-slide.next {
   pointer-events: none;
 }
+.transition-fade .fragment {
+  visibility: visible;
+  opacity: 0;
+}
+.transition-fade .fragment.on {
+  opacity: 1;
+}
+
+
+.transition-zoomout .diapo-slide {
+  opacity: 0;
+  will-change: transform;
+  transform-origin: 50% 50%;
+}
+.transition-zoomout .diapo-slide.prev, .transition-zoomout .diapo-slide.current, .transition-zoomout .diapo-slide.next {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.transition-zoomout .diapo-slide.current {
+  opacity: 1;
+  transform: none;
+}
+.transition-zoomout .diapo-slide.prev {
+  pointer-events: none;
+  transform: scale(0.1);
+}
+.transition-zoomout .diapo-slide.next {
+  pointer-events: none;
+  transform: scale(3);
+}
+.transition-zoomout .fragment {
+  transform-origin: 50% 50%;
+  visibility: visible;
+  opacity: 0;
+  transform: scale(2);
+}
+.transition-zoomout .fragment.on {
+  opacity: 1;
+  transform: none;
+}
+
+.transition-zoomin .diapo-slide {
+  opacity: 0;
+  will-change: transform;
+  transform-origin: 50% 50%;
+}
+.transition-zoomin .diapo-slide.prev, .transition-zoomin .diapo-slide.current, .transition-zoomin .diapo-slide.next {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.transition-zoomin .diapo-slide.current {
+  opacity: 1;
+  transform: none;
+}
+.transition-zoomin .diapo-slide.prev {
+  pointer-events: none;
+  transform: scale(3);
+}
+.transition-zoomin .diapo-slide.next {
+  pointer-events: none;
+  transform: scale(0.1);
+}
+
+
+.transition-rotate {
+  perspective: 800px;
+}
+.transition-rotate .diapo-slide {
+  opacity: 0;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+  transform-origin: 0% 0%;
+}
+.transition-rotate .diapo-slide.prev, .transition-rotate .diapo-slide.current, .transition-rotate .diapo-slide.next {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.transition-rotate .diapo-slide.current {
+  opacity: 1;
+  transform: none;
+}
+.transition-rotate .diapo-slide.prev {
+  pointer-events: none;
+  transform: rotateY(-90deg);
+}
+.transition-rotate .diapo-slide.next {
+  pointer-events: none;
+  transform: rotateY(90deg);
+}
+

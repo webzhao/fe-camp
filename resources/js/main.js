@@ -32,10 +32,13 @@
         var container = document.createElement('div');
         var frame = document.createElement('iframe');
         var closeBtn = document.createElement('div');
-        var close = e => container.style.display = 'none';
+        var close = function(e) {
+          container.style.display = 'none'
+          window.focus();
+        };
 
-        container.style.cssText = 'display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#fff'
-        frame.style.cssText = 'border:none;width:100%;height:90%';
+        container.style.cssText = 'display:none;position:fixed;z-index:2;top:0;left:0;width:100%;height:100%;background:#fff'
+        frame.style.cssText = 'border:none;width:100%;height:100%';
         closeBtn.style.cssText = 'position:fixed;top:0.5em;right:0.5em;cursor:pointer;font-size:2em;color:rgba(50,50,50,0.5)';
 
         frame.src = 'about:blank';
@@ -71,6 +74,11 @@
           doc.open();
           doc.write(html);
           doc.body.style.zoom = 1.5;
+          frame.contentWindow.addEventListener('keyup', function(e){
+            if (e.key == 'Escape') {
+              close()
+            }
+          });
         })
       }
     });
@@ -84,7 +92,18 @@
           diapo.enableKeyNav = editable;
         });
       }
-    })
+    });
+
+    Diapo.addPlugin('nav', {
+      afterRender: function(diapo) {
+        diapo.container.insertAdjacentHTML('beforeend', '<nav class="diapo-nav" style="position:fixed;z-index:1;bottom:1em;right:1em;color:rgba(200,200,200,0.3);font-size:2em;cursor:pointer;"><a data-dir="prev" class="fa fa-chevron-left"></a> <a data-dir="next" class="fa fa-chevron-right"></a></nav>');
+        diapo.container.querySelector('.diapo-nav').addEventListener('click', function(e) {
+          var dir = e.target.dataset.dir;
+          if (!dir) {return;}
+          diapo[dir]();
+        })
+      }
+    });
   }
 
 
