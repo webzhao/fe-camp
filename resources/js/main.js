@@ -39,7 +39,7 @@
 
         container.style.cssText = 'display:none;position:fixed;z-index:2;top:0;left:0;width:100%;height:100%;background:#fff'
         frame.style.cssText = 'border:none;width:100%;height:100%';
-        closeBtn.style.cssText = 'position:fixed;top:0.5em;right:0.5em;cursor:pointer;font-size:2em;color:rgba(50,50,50,0.5)';
+        closeBtn.style.cssText = 'position:fixed;top:0.5em;right:0.5em;cursor:pointer;font-size:2em;color:rgba(50,50,50,0.5);visibility:hidden';
 
         frame.src = 'about:blank';
         closeBtn.innerHTML = '&times;';
@@ -102,6 +102,22 @@
           if (!dir) {return;}
           diapo[dir]();
         })
+      }
+    });
+
+    Diapo.addPlugin('random', {
+      afterRender: function(diapo) {
+        if (diapo.option.transition == 'random') {
+          diapo.randomTransition = 1;
+        }
+      },
+      afterTransition: function(diapo) {
+        if (!diapo.randomTransition) return;
+        var transitions = ['default', 'slide', 'rotate', 'fade', 'zoomout', 'zoomin'];
+        var current = diapo.container.classList[1];
+        diapo.container.classList.remove(current);
+        var random = transitions[Math.floor(transitions.length * Math.random())];
+        diapo.container.classList.add(random);
       }
     });
   }

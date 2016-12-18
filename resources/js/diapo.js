@@ -2915,6 +2915,12 @@ var progress = {
     var progress = document.createElement('progress');
     progress.max = 1;
     diapo.container.appendChild(progress);
+    //seek
+    progress.addEventListener('click', function(e){
+      e.preventDefault();
+      var index = Math.floor(e.pageX / progress.clientWidth * diapo.slides.length);
+      diapo.go(index);
+    });
   },
   afterTransition: function afterTransition(diapo) {
     var progress = diapo.container.querySelector('progress');

@@ -34,3 +34,16 @@ title: 任务
 
 临摹1-3个线上页面
 
+
+---
+
+fragment: true
+
+## 总结
+
+* 不要提交临时文件，将它们加入 .gitignore
+* 指定 font-family 时，最后要设置通用字体族
+* class 命名，不要使用 `top`、`info-left`、`blueText`、`font14` 等命名方式
+* 合理抽象，可以通过使用合适的选择器、添加 class、使用选择器组等方式避免重复
+
+
