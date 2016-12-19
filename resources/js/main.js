@@ -23,7 +23,7 @@
       afterRender: function afterRender(diapo) {
         const images = diapo.container.querySelectorAll('img');
         Array.from(images).filter(img => isRelative(img.getAttribute('src'))).forEach(img => {
-          img.src = '/slides/' + slideName.replace(/[^\/]+$/, '') + img.getAttribute('src');
+          img.src = 'slides/' + slideName.replace(/[^\/]+$/, '') + img.getAttribute('src');
         })
       }
     });
@@ -129,7 +129,7 @@
    * 返回的是一个 Promise
    */
   function getSlideContent(slideName) {
-    const url = `/slides/${slideName}.md`;
+    const url = `slides/${slideName}.md`;
     return fetch(url).then(response => response.text());
   }
 
