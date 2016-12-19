@@ -51,7 +51,7 @@
         closeBtn.onclick = close;
         window.addEventListener('keyup', function(e) {
           if (e.key == 'Escape') return close();
-          if (e.key != 'p' || !e.ctrlKey) return;
+          if (e.key != 'p') return;
           const slide = diapo.slides[diapo.current];
           const code = slide.querySelector('pre code');
           if (!code) return;
@@ -86,10 +86,11 @@
     Diapo.addPlugin('editable', {
       afterRender: function(diapo) {
         window.addEventListener('keyup', function(e) {
-          if (e.key != 'e' || !e.ctrlKey) return;
-          const editable = document.body.contentEditable == 'true';
-          document.body.contentEditable = !editable;
-          diapo.enableKeyNav = editable;
+          const startEdit = e.key == 'e';
+          const stopEdit = e.key == 'Escape';
+          if (!startEdit && !stopEdit) return;
+          document.body.contentEditable = startEdit;
+          diapo.enableKeyNav = stopEdit;
         });
       }
     });
