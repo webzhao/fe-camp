@@ -327,7 +327,7 @@ bgcolor: #ffd454;
 
 ### Hex & RGB
 
-iframe(src="http://hex.colorrrs.com/#ff0000" fullscreen)
+iframe(src="https://www.webpagefx.com/web-design/hex-to-rgb/#ff0000" fullscreen)
 
 ---
 
