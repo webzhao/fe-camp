@@ -2837,7 +2837,7 @@ var prism = createCommonjsModule(function (module) {
  */
 var pageTitle = {
   afterRender: function afterRender(diapo) {
-    document.title = '🅿️ ' + (diapo.option.title || '');
+    document.querySelector('title').innerHTML = '&#x1F17F; ' + (diapo.option.title || '');
   }
 };
 
