@@ -3023,7 +3023,9 @@ var fragment = {
         toStatus = dir === 'next' ? 'fragment on' : 'fragment',
         remains = fragments.filter(f => (dir === 'next') ? !f.classList.contains('on') : f.classList.contains('on'));
     if (!remains.length) return;
-    remains[dir === 'next' ? 'shift' : 'pop']().className = toStatus;
+    var current = remains[dir === 'next' ? 'shift' : 'pop']();
+    current.className = toStatus;
+    current.scrollIntoViewIfNeeded && current.scrollIntoViewIfNeeded();
     return false;
   }
 };
