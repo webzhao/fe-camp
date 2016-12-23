@@ -439,6 +439,7 @@ html {
 }
 .diapo-content table {
   width: 100%;
+  margin-top: 1em;
 }
 .diapo-content table th, .diapo-content table td {
   padding: 0.5em;
