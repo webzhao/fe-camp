@@ -362,7 +362,7 @@ function getTotalPrice(products) {
   if (!Array.isArray(products)) return 0
   return products
     .filter(product => product.valid)
-    .reduce((sum, product) => sum += product.price)
+    .reduce((sum, product) => sum += product.price, 0)
 }
 ```
 
@@ -890,6 +890,10 @@ fragment: 1
 * 性能监控
   * 页面加载时间
   * [performance](https://developer.mozilla.org/en-US/docs/Web/API/Performance) API
+
+
+var a      = 1
+var sfdsad = ww
 
 ---
 
