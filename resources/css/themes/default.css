@@ -6,124 +6,161 @@
 
 code[class*="language-"],
 pre[class*="language-"] {
-	color: #f8f8f2;
-	background: none;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-	word-wrap: normal;
-	line-height: 1.5;
+  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+  line-height: 1.375;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  color: #c5c8c6;
+}
 
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+  text-shadow: none;
+  background: #b4b7b4;
+}
 
-	-webkit-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+  text-shadow: none;
+  background: #b4b7b4;
 }
 
 /* Code blocks */
-
 pre[class*="language-"] {
-	padding: 1em;
-	margin: .5em 0;
-	overflow: auto;
-	border-radius: 0.3em;
-}
-
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-	background: #272822;
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto;
 }
 
 /* Inline code */
-
 :not(pre) > code[class*="language-"] {
-	padding: .1em;
-	border-radius: .3em;
-	white-space: normal;
+  padding: .1em;
+  border-radius: .3em;
 }
 
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	color: slategray;
+  color: #666;
 }
 
 .token.punctuation {
-	color: #f8f8f2;
+  color: #c5c8c6;
 }
 
-.namespace {
-	opacity: .7;
-}
-
-.token.property,
-.token.tag,
-.token.constant,
-.token.symbol,
-.token.deleted {
-	color: #f92672;
-}
-
-.token.boolean,
-.token.number {
-	color: #ae81ff;
-}
-
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-	color: #a6e22e;
+.token.namespace {
+  opacity: .7;
 }
 
 .token.operator,
+.token.boolean,
+.token.number {
+  color: #de935f;
+}
+
+.token.property {
+  color: #f0c674;
+}
+
+.token.tag {
+  color: #81a2be;
+}
+
+.token.string {
+  color: #8abeb7;
+}
+
+.token.selector {
+  color: #b294bb;
+}
+
+.token.attr-name {
+  color: #de935f;
+}
+
 .token.entity,
 .token.url,
 .language-css .token.string,
-.style .token.string,
-.token.variable {
-	color: #f8f8f2;
+.style .token.string {
+  color: #8abeb7;
 }
 
-.token.atrule,
 .token.attr-value,
-.token.function {
-	color: #e6db74;
+.token.keyword,
+.token.control,
+.token.directive,
+.token.unit {
+  color: #b5bd68;
 }
 
-.token.keyword {
-	color: #66d9ef;
-}
-
+.token.statement,
 .token.regex,
-.token.important {
-	color: #fd971f;
+.token.atrule {
+  color: #8abeb7;
+}
+
+.token.placeholder,
+.token.variable {
+  color: #81a2be;
+}
+
+.token.deleted {
+  text-decoration: line-through;
+}
+
+.token.inserted {
+  border-bottom: 1px dotted #ffffff;
+  text-decoration: none;
+}
+
+.token.italic {
+  font-style: italic;
 }
 
 .token.important,
 .token.bold {
-	font-weight: bold;
+  font-weight: bold;
 }
 
-.token.italic {
-	font-style: italic;
+.token.important {
+  color: #cc6666;
 }
 
 .token.entity {
-	cursor: help;
+  cursor: help;
+}
+
+pre > code.highlight {
+  outline: 0.4em solid #cc6666;
+  outline-offset: .4em;
+}
+
+.line-numbers .line-numbers-rows {
+  border-right-color: #282a2e !important;
+}
+
+.line-numbers-rows > span:before {
+  color: #373b41 !important;
+}
+
+.line-highlight {
+  background: rgba(255, 255, 255, 0.2) !important;
+  background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.2) 70%, rgba(255, 255, 255, 0)) !important;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.2) 70%, rgba(255, 255, 255, 0)) !important;
 }
 
 .diapo-container {
-  background: #272822
+  background: #171812
 }
 
 .diapo-container progress[value]::-webkit-progress-value {
@@ -152,6 +189,6 @@ pre[class*="language-"] {
 }
 
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
-  background: #272822;
+  background: transparent;
 }
 

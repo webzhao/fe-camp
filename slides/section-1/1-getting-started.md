@@ -6,7 +6,6 @@ transition: slide
 
 # 前端概览
 ### 赵文博
-#### 2016-12-03
 
 ---
 
@@ -41,17 +40,17 @@ transition: slide
 fragment: true
 
 <div class="stack">
-  <div class="stack-html">内容<br>（HTML）</div>
-  <div class="stack-css fragment">外观<br>（CSS）</div>
-  <div class="stack-js fragment">交互<br>（JavaScript）</div>
+  <div data-type="html">内容<br>（HTML）</div>
+  <div data-type="css" class="fragment">外观<br>（CSS）</div>
+  <div data-type="js" class="fragment">交互<br>（JavaScript）</div>
 </div>
 
 <style>
 .stack { position: relative; font-size: 1.2em; top: 1em }
-.stack > div { position: absolute; left: -4em; top: 0; width: 8em; height: 6em; padding: 1em 0; text-align: center; color: #fff; line-height: 2; transform:rotateX(45deg) rotateZ(-45deg); box-shadow: 0 0 1em 0px rgba(0,0,0,0.8)}
-.stack .stack-html { background: #E44D26 }
-.stack .stack-css { background: #0170BA; top: -4em; }
-.stack .stack-js { background: #F7DF1E; color: black; top: -8em }
+.stack > div { position: absolute; left: -4em; top: 0; width: 8em; height: 6em; padding: 1em 0; text-align: center; color: #fff; line-height: 2; transform:rotateX(45deg) rotateZ(-45deg)!important; box-shadow: 0 0 1em 0px rgba(0,0,0,0.8)}
+.stack [data-type="html"] { background: #E44D26 }
+.stack [data-type="css"] { background: #0170BA; top: -4em; }
+.stack [data-type="js"] { background: #F7DF1E; color: black; top: -8em }
 </style>
 
 ---

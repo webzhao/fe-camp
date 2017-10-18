@@ -400,13 +400,13 @@ html {
   max-width: 80vw;
   max-height: 80vh;
 }
-.diapo-content code pre {
+.diapo-content pre code {
   font-size: 25.6px;
-  font-size: 1.6rem;
-  line-height: 1.2;
+  font-size: 0.8em;
+  line-height: 1.5;
 }
 .diapo-content code[class*="language-"], .diapo-content pre[class*="language-"] {
-  line-height: 1.2;
+  line-height: 1.5;
 }
 .diapo-content h1, .diapo-content h2, .diapo-content h3, .diapo-content h4 {
   margin-top: 0;

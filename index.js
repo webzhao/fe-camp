@@ -9,9 +9,10 @@ var serv = function(req, res) {
   }).pipe(res)
 };
 
+
 var app = http.createServer(function onRequest (req, res) {
-  var path = parseUrl(req).pathname;
-  if (path == '/echo') {
+  var pathname = parseUrl(req).pathname;
+  if (pathname == '/echo') {
     var body = '';
     req.on('data', data => body += data);
     req.on('end', function() {

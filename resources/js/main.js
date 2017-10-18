@@ -73,7 +73,6 @@
           var doc = frame.contentWindow.document;
           doc.open();
           doc.write(html);
-          doc.body.style.zoom = 1.5;
           frame.contentWindow.addEventListener('keyup', function(e){
             if (e.key == 'Escape') {
               close()
@@ -119,6 +118,19 @@
         diapo.container.classList.remove(current);
         var random = transitions[Math.floor(transitions.length * Math.random())];
         diapo.container.classList.add(random);
+      }
+    });
+
+    Diapo.addPlugin('shadow', {
+      afterRender: function(diapo) {
+        if (!('customElements' in window)) return;
+        customElements.define('shadow-dom', class extends HTMLElement {
+          constructor() {
+            super();
+            const shadowRoot = this.attachShadow({mode: 'open'});
+            shadowRoot.innerHTML = `<slot></slot>`;
+          }
+        });
       }
     });
   }
