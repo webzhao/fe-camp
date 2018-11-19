@@ -891,10 +891,6 @@ fragment: 1
   * 页面加载时间
   * [performance](https://developer.mozilla.org/en-US/docs/Web/API/Performance) API
 
-
-var a      = 1
-var sfdsad = ww
-
 ---
 
 ## 总结
